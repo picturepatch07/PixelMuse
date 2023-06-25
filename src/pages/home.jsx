@@ -1,13 +1,22 @@
 import React from "react";
 import FormField from "../components/Formfield/formField";
 import Loader from "../components/Loader/loader";
+import Card from "../components/Card/card";
 
-const RenderCards = { data, title };
+const RenderCards = ({ data, title }) => {
+  if (data.length > 0) {
+    return data.map((post) => <Card post={post} key={post._id} />);
+  }
+  return (
+    <h2 className="mt-5 font-bold text-[#6449ff] text-xl uppercase">{title}</h2>
+  );
+};
 
 function home() {
   const [loading, setLoading] = React.useState(false);
   const [allPosts, setAllPosts] = React.useState(null);
   const [searchText, setSearchText] = React.useState("");
+
   return (
     <div className="max-w-7xl mx-auto">
       <div>
@@ -35,7 +44,13 @@ function home() {
                 <span className="text-[#222328]">{searchText}</span>
               </h2>
             )}
-            <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3"></div>
+            <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+              {searchText ? (
+                <RenderCards data={[]} title="No results found" />
+              ) : (
+                <RenderCards data={[]} title="No posts found" />
+              )}
+            </div>
           </>
         )}
       </div>
