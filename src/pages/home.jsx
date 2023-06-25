@@ -2,9 +2,12 @@ import React from "react";
 import FormField from "../components/Formfield/formField";
 import Loader from "../components/Loader/loader";
 
+const RenderCards = { data, title };
+
 function home() {
   const [loading, setLoading] = React.useState(false);
   const [allPosts, setAllPosts] = React.useState(null);
+  const [searchText, setSearchText] = React.useState("");
   return (
     <div className="max-w-7xl mx-auto">
       <div>
@@ -25,7 +28,15 @@ function home() {
             <Loader />
           </div>
         ) : (
-          <></>
+          <>
+            {searchText && (
+              <h2 className="font-medium text-[#666e75] text-xl mb-3">
+                Showing results for{" "}
+                <span className="text-[#222328]">{searchText}</span>
+              </h2>
+            )}
+            <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3"></div>
+          </>
         )}
       </div>
     </div>
