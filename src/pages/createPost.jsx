@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Preview from "../assets/preview.png";
 import { getRandomPrompt } from "../utils";
 import FormField from "../components/Formfield/formField";
-import loader from "../components/Loader/loader";
+import Loader from "../components/Loader/loader";
 
 function createPost() {
   const navigate = useNavigate();
@@ -66,6 +66,11 @@ function createPost() {
                   alt="preview"
                   className="w-9/12 h-9/12 object-contain opacity-50"
                 />
+              )}
+              {generatingImg && (
+                <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
+                  <Loader />
+                </div>
               )}
             </div>
           </div>
