@@ -14,7 +14,12 @@ function createPost() {
   });
   const [generatingImg, setGeneratingImg] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+
   const handleSubmit = () => {};
+
+  const handleChange = (e) => {};
+
+  const handleSurpriseMe = () => {};
 
   return (
     <div>
@@ -30,7 +35,24 @@ function createPost() {
         </div>
         <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
           <div className="flex flec-col gap-5">
-            <FormField />
+            <FormField
+              LabelName="Your name"
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              value={form.name}
+              handleChange={handleChange}
+            />
+            <FormField
+              LabelName="Prompt"
+              type="text"
+              name="prompt"
+              placeholder="Enter prompt"
+              value={form.prompt}
+              handleChange={handleChange}
+              isSurpriseMe
+              handleSurpriseMe={handleSurpriseMe}
+            />
           </div>
         </form>
       </section>
