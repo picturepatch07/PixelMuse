@@ -36,6 +36,8 @@ function createPost() {
       } finally {
         setGeneratingImg(flase);
       }
+    } else {
+      alert("Please enter a prompt");
     }
   };
 
