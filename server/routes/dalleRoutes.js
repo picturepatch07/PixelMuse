@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
-const v2 = require("cloudinary").v2;
-const Post = require("../models/postModel");
+const Configuration = require("openai");
+const OpenAIApi = require("openai");
 
 const router = require("express").Router();
 
