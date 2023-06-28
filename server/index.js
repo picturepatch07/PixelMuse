@@ -12,6 +12,9 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/post", require("./routes/postRoutes.js"));
+app.use("/api/dalle", require("./routes/dalleRoutes.js"));
+
 app.get("/", async (req, res) => {
   res.send("Hello World");
 });
