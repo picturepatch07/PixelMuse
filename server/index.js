@@ -1,24 +1,24 @@
-const express = require("express");
-const dotenv = require("dotenv").config();
-const cors = require("cors");
-const connectDB = require("./config/dbConnections");
+import express from "express";
+import * as dotenv from "dotenv";
+import cors from "cors";
 
-connectDB();
+dotenv.config();
 
 const app = express();
-
-const port = process.env.PORT || 5000;
-
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
 
-app.use("/api/post", require("./routes/postRoutes.js"));
-app.use("/api/dalle", require("./routes/dalleRoutes.js"));
+// app.use("/api/v1/post", require("./routes/postRoutes.js"));
+// app.use("/api/v1/dalle", require("./routes/dalleRoutes.js"));
 
 app.get("/", async (req, res) => {
   res.send("Hello World");
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
+const startServer = async () => {
+  app.listen(8080, () =>
+    console.log("Server has started on port http://localhost:8080")
+  );
+};
+
+startServer();
